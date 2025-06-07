@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Your Property | GhanaPrime Properties</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h2>GhanaPrime</h2>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="listings.html">Properties</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="submit-property.html" class="btn btn-primary active">List Property</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>List Your Property</h1>
+                <p>Get your property in front of thousands of qualified buyers</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="submit-property">
+        <div class="container">
+            <div class="form-intro">
+                <h2>Property Submission Form</h2>
+                <p>Complete this form and our team will contact you within 24 hours. Fields marked with <span class="required">*</span> are required.</p>
+            </div>
+
+            <form id="propertyForm" class="property-form">
+                <div class="form-section">
+                    <h3>Property Details</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="property-type">Property Type <span class="required">*</span></label>
+                            <select id="property-type" name="property-type" required>
+                                <option value="">Select Type</option>
+                                <option value="house">House</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="land">Land</option>
+                                <option value="commercial">Commercial Property</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="listing-type">Listing Type <span class="required">*</span></label>
+                            <select id="listing-type" name="listing-type" required>
+                                <option value="">Select Option</option>
+                                <option value="sale">For Sale</option>
+                                <option value="rent">For Rent</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Asking Price (GH₵) <span class="required">*</span></label>
+                            <input type="number" id="price" name="price" min="0" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Location Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="region">Region <span class="required">*</span></label>
+                            <select id="region" name="region" required>
+                                <option value="">Select Region</option>
+                                <option value="greater-accra">Greater Accra</option>
+                                <option value="ashanti">Ashanti</option>
+                                <option value="western">Western</option>
+                                <option value="central">Central</option>
+                                <option value="eastern">Eastern</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="address">Full Address <span class="required">*</span></label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Property Features</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="bedrooms">Bedrooms</label>
+                            <input type="number" id="bedrooms" name="bedrooms" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="bathrooms">Bathrooms</label>
+                            <input type="number" id="bathrooms" name="bathrooms" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Size (sq ft)</label>
+                            <input type="number" id="size" name="size" min="0">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="description">Property Description <span class="required">*</span></label>
+                            <textarea id="description" name="description" rows="6" required placeholder="Describe your property's key features, amenities, and unique selling points..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Media Upload</h3>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="photos">Upload Photos (Max 10) <span class="required">*</span></label>
+                            <input type="file" id="photos" name="photos" accept="image/*" multiple required>
+                            <p class="form-help">Upload high-quality photos of your property. First image will be used as the main photo.</p>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="video">Video Tour Link (Optional)</label>
+                            <input type="url" id="video" name="video" placeholder="YouTube or Vimeo link">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Your Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="owner-name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="owner-name" name="owner-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="owner-phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="owner-phone" name="owner-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="owner-email">Email Address</label>
+                            <input type="email" id="owner-email" name="owner-email">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-primary">Submit Property</button>
+                    <p class="form-note">By submitting, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GhanaPrime</h3>
+                    <p>Ghana's premier real estate agency, connecting buyers and sellers since 2020.</p>
+                    <div class="social-links">
+                        <div class="social-links">
+                        <a href="#" aria-label="Follow us on Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Follow us on Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Follow us on Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Follow us on LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Properties</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Property Sales</a></li>
+                        <li><a href="#">Property Rentals</a></li>
+                        <li><a href="#">Property Management</a></li>
+                        <li><a href="#">Investment Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Independence Ave, Accra</p>
+                        <p><i class="fas fa-phone"></i> +233 24 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@ghanaprime.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 GhanaPrime Properties. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
