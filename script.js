@@ -421,16 +421,16 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                             <form class="inquiry-form">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Your Name" required>
+                                    <input type="text" id="inquiry-name" placeholder="Your Name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" placeholder="Your Email" required>
+                                    <input type="email" id="inquiry-email" placeholder="Your Email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" placeholder="Your Phone">
+                                    <input type="tel" id="inquiry-phone" placeholder="Your Phone">
                                 </div>
                                 <div class="form-group">
-                                    <textarea rows="4" placeholder="I am interested in ${propertyTitle}..." required></textarea>
+                                    <textarea id="inquiry-message" rows="4" placeholder="I am interested in ${propertyTitle}..." required></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                             </form>
@@ -446,7 +446,19 @@ document.addEventListener("DOMContentLoaded", () => {
       if(newForm) {
           newForm.addEventListener("submit", function(e) {
               e.preventDefault();
-              alert("Message sent! An agent will contact you shortly.");
+              
+              const name = document.getElementById("inquiry-name").value;
+              const email = document.getElementById("inquiry-email").value;
+              const phone = document.getElementById("inquiry-phone").value;
+              const message = document.getElementById("inquiry-message").value;
+              
+              const whatsappNumber = "233544130026"; // 0544130026
+              const text = `*New Property Inquiry*\n\n*Property:* ${propertyTitle}\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Message:* ${message}`;
+              const encodedText = encodeURIComponent(text);
+              const url = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+              
+              window.open(url, '_blank');
+              
               this.reset();
           });
       }
