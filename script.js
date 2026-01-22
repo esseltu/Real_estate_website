@@ -419,18 +419,21 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <p>Senior Agent</p>
                                 </div>
                             </div>
-                            <form class="inquiry-form">
+                            <form class="inquiry-form" action="https://formsubmit.co/pixelforge926@gmail.com" method="POST">
+                                <input type="hidden" name="_subject" value="New Inquiry for ${propertyTitle}">
+                                <input type="hidden" name="_next" value="${window.location.href}">
+                                <input type="hidden" name="_captcha" value="false">
                                 <div class="form-group">
-                                    <input type="text" id="inquiry-name" placeholder="Your Name" required>
+                                    <input type="text" name="name" id="inquiry-name" placeholder="Your Name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" id="inquiry-email" placeholder="Your Email" required>
+                                    <input type="email" name="email" id="inquiry-email" placeholder="Your Email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" id="inquiry-phone" placeholder="Your Phone">
+                                    <input type="tel" name="phone" id="inquiry-phone" placeholder="Your Phone">
                                 </div>
                                 <div class="form-group">
-                                    <textarea id="inquiry-message" rows="4" placeholder="I am interested in ${propertyTitle}..." required></textarea>
+                                    <textarea name="message" id="inquiry-message" rows="4" placeholder="I am interested in ${propertyTitle}..." required></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                             </form>
