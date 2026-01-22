@@ -13,15 +13,16 @@
 <body>
     <header class="header">
         <div class="container">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <h2>GhanaPrime</h2>
-            </div>
+            </a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="listings.html">Properties</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li class="mobile-only mt-1"><a href="submit-property.html" class="btn btn-primary w-100 justify-center">List Property</a></li>
                 </ul>
                 <a href="submit-property.html" class="btn btn-primary active">List Property</a>
                 <div class="hamburger">
@@ -49,7 +50,10 @@
                 <p>Complete this form and our team will contact you within 24 hours. Fields marked with <span class="required">*</span> are required.</p>
             </div>
 
-            <form id="propertyForm" class="property-form">
+            <form id="propertyForm" class="property-form" action="https://formsubmit.co/pixelforge926@gmail.com" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_subject" value="New Property Submission">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
                 <div class="form-section">
                     <h3>Property Details</h3>
                     <div class="form-grid">
@@ -168,17 +172,15 @@
                 <div class="footer-section">
                     <h3>GhanaPrime</h3>
                     <p>Ghana's premier real estate agency, connecting buyers and sellers since 2020.</p>
-                    <div class="social-links">
-                        <div class="social-links">
+                    <div class="footer-social-links">
                         <a href="#" aria-label="Follow us on Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Follow us on Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" aria-label="Follow us on Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="Follow us on LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
-                    </div>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="listings.html">Properties</a></li>
@@ -187,7 +189,7 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Services</h4>
+                    <h3>Services</h3>
                     <ul>
                         <li><a href="#">Property Sales</a></li>
                         <li><a href="#">Property Rentals</a></li>
@@ -196,17 +198,17 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Independence Ave, Accra</p>
-                        <p><i class="fas fa-phone"></i> +233 24 123 4567</p>
-                        <p><i class="fas fa-envelope"></i> info@ghanaprime.com</p>
-                    </div>
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> 123 Independence Ave, Accra</li>
+                        <li class="footer-contact-item"><i class="fas fa-phone"></i> +233 24 123 4567</li>
+                        <li class="footer-contact-item"><i class="fas fa-envelope"></i> info@ghanaprime.com</li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 GhanaPrime Properties. All rights reserved.</p>
-                <div class="legal-links">
+                <p>&copy; 2024 GhanaPrime Properties. All rights reserved.</p>
+                <div class="footer-legal-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                 </div>

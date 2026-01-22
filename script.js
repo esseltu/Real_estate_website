@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       features: ["Swimming Pool", "Landscaped Garden", "24/7 Security", "Backup Generator", "Modern Kitchen", "En-suite Bedrooms", "Double Garage", "Smart Home System"]
     },
     "Modern Apartment, Ahodwo": {
+      type: "apartment",
       price: "GH₵420,000",
       location: "Kumasi, Ghana",
       image: "Modern Apartment, Ahodwo.jpg",
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       features: ["Direct Beach Access", "Ocean Views", "Infinity Pool", "Outdoor Lounge", "Home Theater", "Guest Wing", "Solar Power", "Electric Fencing"]
     },
     "Commercial Complex, Osu": {
+      type: "commercial",
       price: "GH₵2,500,000",
       location: "Accra, Ghana",
       image: "Commercial Complex, Osu.jpg",
@@ -52,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       features: ["High Speed Elevators", "Underground Parking", "Backup Power Plant", "Fiber Optic Internet", "CCTV Surveillance", "Reception Area", "Conference Rooms"]
     },
     "Prime Land, Airport Hills": {
+      type: "land",
       price: "GH₵350,000",
       location: "Accra, Ghana",
       image: "Prime Land, Airport Hills.jpg",
@@ -101,11 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
-      e.preventDefault()
-
       const targetId = this.getAttribute("href")
-      if (targetId === "#") return
+      if (targetId === "#" || !targetId.startsWith("#")) return
 
+      e.preventDefault()
       const targetElement = document.querySelector(targetId)
       if (targetElement) {
         const headerHeight = document.querySelector(".header").offsetHeight
@@ -119,29 +121,33 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Property card hover effect
-  const propertyCards = document.querySelectorAll(".property-card")
-  propertyCards.forEach((card) => {
-    card.addEventListener("mouseenter", function () {
-      const img = this.querySelector(".property-image img")
-      if (img) img.style.transform = "scale(1.1)"
-    })
+  // Property card hover effect - Handled by CSS
+  // JS removed for performance and separation of concerns
 
-    card.addEventListener("mouseleave", function () {
-      const img = this.querySelector(".property-image img")
-      if (img) img.style.transform = "scale(1)"
-    })
-  })
 
   // Form submission handling
   const forms = document.querySelectorAll("form")
   forms.forEach((form) => {
+    // Skip filter form as it has custom handler
+    if (form.classList.contains("filters-form")) return
+
     form.addEventListener("submit", function (e) {
+      if (this.getAttribute("action") && this.getAttribute("action").includes("formsubmit.co")) {
+        // Let normal form submission happen for FormSubmit
+        return
+      }
+
       e.preventDefault()
 
       if (this.classList.contains("newsletter-form")) {
         const email = this.querySelector('input[type="email"]').value
         alert(`Thank you for subscribing with ${email}! You'll receive our newsletter soon.`)
+        this.reset()
+      } else if (this.classList.contains("property-form")) {
+        alert("Thank you for your property submission! Our team will review the details and contact you shortly.")
+        this.reset()
+      } else if (this.classList.contains("contact-form")) {
+        alert("Thank you for your message! We will get back to you shortly.")
         this.reset()
       } else if (this.querySelector(".search-btn")) {
         alert("Searching for properties... This would normally submit the search form.")
@@ -154,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
   viewDetailsButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const propertyTitle = this.closest(".property-details").querySelector("h3").textContent
-      // Redirect to property details page with the title as a parameter
       window.location.href = `property-details.html?property=${encodeURIComponent(propertyTitle)}`
     })
   })
@@ -207,8 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (heroContent) {
     const children = heroContent.children
     Array.from(children).forEach((child, index) => {
-      // Add delay classes based on index (100ms, 200ms, etc.)
-      // Cap at 500ms or loop if needed, but usually hero content has 3-4 items
       const delay = Math.min((index + 1) * 100, 500)
       child.classList.add(`delay-${delay}`)
     })
@@ -216,6 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   elementsToAnimate.forEach((el) => {
     el.style.opacity = "0" // Hide initially
+    el.style.animationFillMode = "forwards"
     observer.observe(el)
   })
 
@@ -224,7 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (filterForm) {
     filterForm.addEventListener("submit", function (e) {
       e.preventDefault()
-      e.stopPropagation()
       
       const formData = new FormData(this)
       const location = formData.get("location").toLowerCase()
@@ -287,6 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
       properties.forEach(([title, property]) => {
           const card = document.createElement("div")
           card.className = "property-card"
+          card.style.opacity = "0" // For animation
           
           // Generate specs HTML
           let specsHtml = ''
@@ -301,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="property-details">
                 <h3>${title}</h3>
-                <p class="location">${property.location}</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> ${property.location}</p>
                 <div class="features">
                     ${specsHtml}
                 </div>
@@ -309,6 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           `
           propertiesGrid.appendChild(card)
+          observer.observe(card) // Animate new card
       })
       
       // Re-attach listeners to new buttons
@@ -318,27 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const propertyTitle = this.closest(".property-details").querySelector("h3").textContent
           window.location.href = `property-details.html?property=${encodeURIComponent(propertyTitle)}`
         })
-      })
-      
-      // Re-attach hover effects
-      const newCards = propertiesGrid.querySelectorAll(".property-card")
-      newCards.forEach((card) => {
-        card.addEventListener("mouseenter", function () {
-          const img = this.querySelector(".property-image img")
-          if (img) img.style.transform = "scale(1.1)"
-        })
-
-        card.addEventListener("mouseleave", function () {
-          const img = this.querySelector(".property-image img")
-          if (img) img.style.transform = "scale(1)"
-        })
-      })
-      
-      // Re-initialize animations for new elements
-      const newAnimatedElements = propertiesGrid.querySelectorAll(".property-card")
-      newAnimatedElements.forEach((element) => {
-        element.style.opacity = "0"
-        observer.observe(element)
       })
   }
 
@@ -378,7 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="property-header">
                     <h1 class="property-title">${propertyTitle}</h1>
                     <p class="property-location"><i class="fas fa-map-marker-alt"></i> ${property.location}</p>
-                    <div class="property-price">${property.price}</div>
+                    <div class="property-price-lg">${property.price}</div>
                 </div>
 
                 <div class="property-gallery">
@@ -415,11 +399,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <i class="fas fa-user"></i>
                                 </div>
                                 <div class="agent-info">
-                                    <h4>Theophilus Martey</h4>
+                                    <h4>Kwesi Essel Turkson</h4>
                                     <p>Senior Agent</p>
                                 </div>
                             </div>
-                            <form class="inquiry-form" action="https://formsubmit.co/pixelforge926@gmail.com" method="POST">
+                            <form class="inquiry-form contact-form" action="https://formsubmit.co/pixelforge926@gmail.com" method="POST">
                                 <input type="hidden" name="_subject" value="New Inquiry for ${propertyTitle}">
                                 <input type="hidden" name="_next" value="${window.location.href}">
                                 <input type="hidden" name="_captcha" value="false">
@@ -435,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="form-group">
                                     <textarea name="message" id="inquiry-message" rows="4" placeholder="I am interested in ${propertyTitle}..." required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                                <button type="submit" class="btn btn-primary w-100">Send Message</button>
                             </form>
                         </div>
                     </div>
@@ -443,9 +427,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
       `
-      
-      // Form submission logic is now handled natively by the action attribute
-
     } else {
       container.innerHTML = `
         <div class="container" style="padding: 100px 0; text-align: center;">

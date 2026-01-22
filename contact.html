@@ -13,15 +13,16 @@
 <body>
     <header class="header">
         <div class="container">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <h2>GhanaPrime</h2>
-            </div>
+            </a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="listings.html">Properties</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
+                    <li class="mobile-only mobile-nav-btn"><a href="submit-property.html" class="btn btn-primary">List Property</a></li>
                 </ul>
                 <a href="submit-property.html" class="btn btn-primary">List Property</a>
                 <div class="hamburger">
@@ -42,23 +43,26 @@
         </div>
     </section>
 
-    <section class="contact-main">
+    <section>
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-form-section">
-                    <h2>Send Us a Message</h2>
-                    <form id="contactForm" class="contact-form" action="/submit-contact" method="POST">
+                <div class="contact-form-section animate-fade-up">
+                    <h2 class="mb-2">Send Us a Message</h2>
+                    <form id="contactForm" class="contact-form" action="https://formsubmit.co/pixelforge926@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Contact Message">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
@@ -72,14 +76,14 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
                     </form>
                 </div>
 
-                <div class="contact-info-section">
-                    <h2>Our Offices</h2>
+                <div class="contact-info-section animate-fade-up delay-200">
+                    <h2 class="mb-2">Our Offices</h2>
                     
                     <div class="office-card">
                         <h3>Accra Headquarters</h3>
@@ -88,42 +92,45 @@
                             <p><i class="fas fa-phone"></i> +233 24 123 4567</p>
                             <p><i class="fas fa-envelope"></i> accra@ghanaprime.com</p>
                         </div>
-                        <div class="office-hours">
-                            <h4>Opening Hours</h4>
-                            <p>Monday - Friday: 8:30 AM - 5:30 PM</p>
-                            <p>Saturday: 10:00 AM - 2:00 PM</p>
-                            <p>Sunday: Closed</p>
-                        </div>
+                        <div class="office-hours mt-1">
+                        <h4 class="office-hours-title">OPENING HOURS</h4>
+                        <p class="mb-0">Mon - Fri: 8:30 AM - 5:30 PM</p>
+                        <p class="mb-0">Sat: 10:00 AM - 2:00 PM</p>
+                        <p>Sun: Closed</p>
                     </div>
+                </div>
 
-                    <div class="office-card">
-                        <h3>Kumasi Branch</h3>
-                        <div class="office-details">
-                            <p><i class="fas fa-map-marker-alt"></i> 45 Prempeh II Street, Kumasi</p>
-                            <p><i class="fas fa-phone"></i> +233 32 123 4567</p>
-                            <p><i class="fas fa-envelope"></i> kumasi@ghanaprime.com</p>
-                        </div>
-                        <div class="office-hours">
-                            <h4>Opening Hours</h4>
-                            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-                            <p>Saturday: 10:00 AM - 2:00 PM</p>
-                            <p>Sunday: Closed</p>
-                        </div>
+                <div class="office-card">
+                    <h3>Kumasi Branch</h3>
+                    <div class="office-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 45 Prempeh II Street, Kumasi</p>
+                        <p><i class="fas fa-phone"></i> +233 32 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> kumasi@ghanaprime.com</p>
+                    </div>
+                    <div class="office-hours mt-1">
+                        <h4 class="office-hours-title">OPENING HOURS</h4>
+                        <p class="mb-0">Mon - Fri: 9:00 AM - 5:00 PM</p>
+                        <p class="mb-0">Sat: 10:00 AM - 2:00 PM</p>
+                        <p>Sun: Closed</p>
+                    </div>
                     </div>
                 </div>
             </div>
 
-            <div class="map-section">
-                <h2>Find Us</h2>
+            <div class="map-section animate-fade-up delay-300">
+                <div class="section-header">
+                    <h2>Find Us</h2>
+                    <p>Visit our headquarters in the heart of Accra</p>
+                </div>
                 <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.755272987495!2d-0.2003769256869156!3d5.555979794393598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzMnMjEuNSJOIDDCsDExJzU3LjgiVw!5e0!3m2!1sen!2sgh!4v1620000000000!5m2!1sen!2sgh" 
-                        width="100%" 
-                        height="400" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.755272987495!2d-0.2003769256869156!3d5.555979794393598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzMnMjEuNSJOIDDCsDExJzU3LjgiVw!5e0!3m2!1sen!2sgh!4v1620000000000!5m2!1sen!2sgh" 
+                            width="100%" 
+                            height="100%" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,16 +141,16 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>GhanaPrime</h3>
-                    <p>Ghana's premier real estate agency, connecting buyers and sellers since 2008.</p>
-                    <div class="social-links">
-                        <a href="https://facebook.com/ghanaprime" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/ghanaprime" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://instagram.com/ghanaprime" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <p>Ghana's premier real estate agency, connecting buyers and sellers since 2020. We provide professional, trusted service for all your real estate needs.</p>
+                    <div class="footer-social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="listings.html">Properties</a></li>
@@ -152,7 +159,7 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Services</h4>
+                    <h3>Services</h3>
                     <ul>
                         <li><a href="#">Property Sales</a></li>
                         <li><a href="#">Property Rentals</a></li>
@@ -161,19 +168,19 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Independence Ave, Accra</p>
-                        <p><i class="fas fa-phone"></i> +233 24 123 4567</p>
-                        <p><i class="fas fa-envelope"></i> info@ghanaprime.com</p>
-                    </div>
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> 123 Independence Ave, Accra</li>
+                        <li class="footer-contact-item"><i class="fas fa-phone"></i> +233 24 123 4567</li>
+                        <li class="footer-contact-item"><i class="fas fa-envelope"></i> info@ghanaprime.com</li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 GhanaPrime Properties. All rights reserved.</p>
-                <div class="legal-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms of Service</a>
+                <p>&copy; 2024 GhanaPrime Properties. All rights reserved.</p>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
         </div>
