@@ -229,7 +229,10 @@ section {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #616569 0%, #080909ed 100%);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   padding-top: 5rem;
 }
 
