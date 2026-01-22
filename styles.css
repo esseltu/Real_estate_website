@@ -1055,6 +1055,7 @@ input:focus, select:focus, textarea:focus {
   .mobile-nav-btn a {
     width: 100%;
     justify-content: center;
+    color: white !important;
   }
   
   .footer-content {
