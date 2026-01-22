@@ -419,7 +419,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <p>Senior Agent</p>
                                 </div>
                             </div>
-                            <form class="inquiry-form">
+                            <form class="inquiry-form" action="https://formsubmit.co/pixelforge926@gmail.com" method="POST">
+                                <input type="hidden" name="_subject" value="New Inquiry for ${propertyTitle}">
+                                <input type="hidden" name="_next" value="${window.location.href}">
+                                <input type="hidden" name="_captcha" value="false">
                                 <div class="form-group">
                                     <input type="text" name="name" id="inquiry-name" placeholder="Your Name" required>
                                 </div>
@@ -441,27 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `
       
-      // Re-attach form listener for the new dynamic form
-      const newForm = container.querySelector("form");
-      if(newForm) {
-          newForm.addEventListener("submit", function(e) {
-              e.preventDefault();
-              
-              const name = document.getElementById("inquiry-name").value;
-              const email = document.getElementById("inquiry-email").value;
-              const phone = document.getElementById("inquiry-phone").value;
-              const message = document.getElementById("inquiry-message").value;
-              
-              const whatsappNumber = "233544130026"; // 0544130026
-              const text = `*New Property Inquiry*\n\n*Property:* ${propertyTitle}\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Message:* ${message}`;
-              const encodedText = encodeURIComponent(text);
-              const url = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
-              
-              window.open(url, '_blank');
-              
-              this.reset();
-          });
-      }
+      // Form submission logic is now handled natively by the action attribute
 
     } else {
       container.innerHTML = `
