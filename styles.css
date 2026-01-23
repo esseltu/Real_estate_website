@@ -404,6 +404,10 @@ input:focus, select:focus, textarea:focus {
   gap: 2.5rem;
 }
 
+.featured-properties .text-center {
+  margin-top: 3rem;
+}
+
 .property-card {
   background: white;
   border-radius: var(--radius-md);
@@ -411,6 +415,9 @@ input:focus, select:focus, textarea:focus {
   box-shadow: var(--shadow-sm);
   transition: transform var(--duration), box-shadow var(--duration);
   border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .property-card:hover {
@@ -420,8 +427,9 @@ input:focus, select:focus, textarea:focus {
 
 .property-image {
   position: relative;
-  height: 240px;
+  height: 250px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .property-image img {
@@ -449,6 +457,9 @@ input:focus, select:focus, textarea:focus {
 
 .property-details {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .property-details h3 {
@@ -476,6 +487,11 @@ input:focus, select:focus, textarea:focus {
   margin-bottom: 1.25rem;
 }
 
+.property-details .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
 .features span {
   display: flex;
   align-items: center;
@@ -490,18 +506,44 @@ input:focus, select:focus, textarea:focus {
 
 /* Filters Section */
 .filters-section {
-  background: var(--bg-light);
-  padding: 2rem;
+  background: white;
+  padding: 1.5rem 2rem;
   border-radius: var(--radius-md);
   margin-bottom: 3rem;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .filters-form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
-  align-items: end;
+  align-items: center;
+}
+
+.filters-form .form-group {
+  margin-bottom: 0;
+}
+
+.filters-form select {
+  background-color: #fff;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%231a1a1a' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.filters-form select:hover {
+  border-color: var(--secondary);
+}
+
+.filters-form .btn {
+  width: 100%;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  justify-content: center;
 }
 
 .results-header {
