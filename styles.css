@@ -370,7 +370,12 @@ input:focus, select:focus, textarea:focus {
 @media (max-width: 768px) {
   .hero {
     background-attachment: scroll;
-    height: 100svh; /* Use small viewport height for better mobile support */
+    min-height: 100svh;
+    height: auto;
+    background-position: center;
+    background-size: cover;
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: 2rem;
   }
 }
 
