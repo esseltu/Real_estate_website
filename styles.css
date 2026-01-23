@@ -367,6 +367,13 @@ input:focus, select:focus, textarea:focus {
   margin-right: auto;
 }
 
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+    height: 100svh; /* Use small viewport height for better mobile support */
+  }
+}
+
 /* Page Hero (for sub-pages) */
 .page-hero {
   position: relative;
